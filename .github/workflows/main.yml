@@ -35,7 +35,7 @@ jobs:
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
           
           # Tạo user RDP
-          New-LocalUser -Name "RDP" -Password $securePass -AccountNeverExpires -Force
+          New-LocalUser -Name "RDP" -Password $securePass -AccountNeverExpires
           
           # Thêm quyền
           Add-LocalGroupMember -Group "Administrators" -Member "RDP"
@@ -49,6 +49,7 @@ jobs:
               Write-Error "User creation failed"
               exit 1
           }
+
 
       - name: Install Tailscale
         run: |
